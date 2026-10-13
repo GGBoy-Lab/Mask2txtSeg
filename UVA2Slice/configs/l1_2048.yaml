@@ -1,0 +1,25 @@
+input:
+  tif_dir: 'tif'
+  shp_path: 'L1.shp'
+  out_dir: 'L1\2048'
+
+slice:
+  crop_size: 2048
+  overlap: 0.1
+  suffix: 'n'
+  palette:
+    field: 'type'
+    classes: ['其他农作物', '茶树', '大棚', '蔬菜']
+    colors: [[255, 255, 255], [255, 0, 0], [0, 255, 0], [0, 0, 255]]
+
+filter:
+  background_threshold: 0.95
+
+dataset:
+  val_ratio: 0.1
+
+steps:
+  slice: true
+  filter: true
+  to_txt: true
+  dataset: true
