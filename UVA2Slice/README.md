@@ -1,33 +1,24 @@
-🧾 README - YOLO Segmentation Label Converter
-This script converts RGB-colored segmentation mask images into YOLOv8-compatible .txt label files. It extracts contours from masks and writes them in normalized polygon format required by YOLO for instance segmentation tasks.
+# 🧾 README - YOLO Segmentation Label Converter
 
-📁 Project Overview
-Purpose: Convert RGB segmentation masks to YOLO label format.
-Input:
-RGB-colored segmentation mask images (.png)
-Corresponding image files
-Output:
-.txt label files with normalized polygon coordinates
-Supports: Multiple object classes via custom color-to-class mapping
+该脚本用于将 **RGB 彩色分割掩码图像** 转换为 **YOLOv8 兼容的 `.txt` 标签文件**。它会从掩码中提取轮廓，并按照 YOLO 实例分割任务所需的多边形归一化格式进行写入。
 
-⚙️ Requirements
-Install the following dependencies:
+---
+
+## 📁 项目概览
+
+- **用途**：将 RGB 分割掩码转换为 YOLO 标签格式。
+- **输入**：
+  - RGB 彩色分割掩码图像（`.png`）
+  - 对应的原始图像文件
+- **输出**：
+  - 包含归一化多边形坐标的 `.txt` 标签文件
+- **支持**：通过自定义颜色到类别的映射支持多类别目标
+
+---
+
+## ⚙️ 环境要求
+
+安装以下依赖：
+
+```bash
 pip install opencv-python numpy pathlib
-
-🗂️ Directory Structure
-Ensure your dataset follows this structure:
-
-project/
-├── data/
-│   └── VOC/
-│       ├── JPEGImages/          # Original image files (.jpg, .png)
-│       └── SegmentationClass/   # RGB segmentation mask images (.png)
-├── mask2txt_custom.py           # This conversion script
-└── labels/                      # Output directory for label files (will be created automatically)
-
-🧪 How It Works
-Reads RGB segmentation mask as a NumPy array
-Maps pixel values to class IDs using the defined color map
-Extracts external contours for each class
-Normalizes contour points based on image dimensions
-Saves results in YOLO segmentation label format:
